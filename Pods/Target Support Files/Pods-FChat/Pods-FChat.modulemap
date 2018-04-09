@@ -1,0 +1,6 @@
+framework module Pods_FChat {
+  umbrella header "Pods-FChat-umbrella.h"
+
+  export *
+  module * { export * }
+}
