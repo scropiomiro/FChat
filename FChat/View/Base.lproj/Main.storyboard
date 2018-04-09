@@ -32,6 +32,7 @@
                                 <state key="normal" title="登入"/>
                                 <connections>
                                     <action selector="onClickLongin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dOT-J5-fZN"/>
+                                    <segue destination="MHU-8T-sKJ" kind="show" id="mgK-cS-fi6"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GjQ-lE-5qo">
@@ -81,10 +82,53 @@
             </objects>
             <point key="canvasLocation" x="117.59999999999999" y="118.29085457271366"/>
         </scene>
-        <!--View Controller-->
+        <!--Chat View Controller-->
+        <scene sceneID="J1z-h7-VWe">
+            <objects>
+                <viewController id="MHU-8T-sKJ" customClass="ChatViewController" customModule="FChat" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hq2-xj-SOl">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5FZ-ap-Dve">
+                                <rect key="frame" x="306" y="625" width="59" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Send"/>
+                                <connections>
+                                    <action selector="sendPressed:" destination="MHU-8T-sKJ" eventType="touchUpInside" id="e43-kM-a6C"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="blI-DC-kSz">
+                                <rect key="frame" x="16" y="617" width="291" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="33"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xIR-a6-CSL">
+                                <rect key="frame" x="0.0" y="44" width="375" height="565"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="glO-PI-dSW"/>
+                    </view>
+                    <connections>
+                        <outlet property="messageTableView" destination="xIR-a6-CSL" id="Hwa-8f-dGa"/>
+                        <outlet property="messageTextfield" destination="blI-DC-kSz" id="hcr-7K-yLN"/>
+                        <outlet property="sendButton" destination="5FZ-ap-Dve" id="YN1-NY-qLU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="75x-By-mtf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="887.20000000000005" y="118.29085457271366"/>
+        </scene>
+        <!--Reset View Controller-->
         <scene sceneID="5uf-lY-YmY">
             <objects>
-                <viewController id="FZx-xS-Gmq" sceneMemberID="viewController">
+                <viewController id="FZx-xS-Gmq" customClass="ResetViewController" customModule="FChat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ci4-XM-2BS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -94,6 +138,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="重設密碼"/>
+                                <connections>
+                                    <action selector="onClickLogin:" destination="FZx-xS-Gmq" eventType="touchUpInside" id="vju-aA-fwI"/>
+                                </connections>
                             </button>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iPD-Mt-oXo">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -113,10 +160,13 @@
                         <color key="backgroundColor" red="0.66275984960000001" green="0.98871612900000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="lUG-dX-VSW"/>
                     </view>
+                    <connections>
+                        <outlet property="emailTxtFld" destination="puy-9b-JSy" id="v4Q-Db-2jP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ycy-KN-hPg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="117.59999999999999" y="870.31484257871068"/>
+            <point key="canvasLocation" x="-194" y="915"/>
         </scene>
         <!--Register View Controller-->
         <scene sceneID="znH-u3-NqV">
@@ -167,7 +217,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6TR-Tg-Ywc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="960.79999999999995" y="117.39130434782609"/>
+            <point key="canvasLocation" x="466" y="915"/>
         </scene>
     </scenes>
 </document>
