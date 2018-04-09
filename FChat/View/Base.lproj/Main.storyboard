@@ -30,6 +30,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="登入"/>
+                                <connections>
+                                    <action selector="onClickLongin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dOT-J5-fZN"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GjQ-lE-5qo">
                                 <rect key="frame" x="151" y="399" width="72" height="30"/>
@@ -54,6 +57,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="登出"/>
+                                <connections>
+                                    <action selector="onClickLogout:" destination="BYZ-38-t0r" eventType="touchUpInside" id="prb-wj-FDV"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DTc-dJ-Il4">
                                 <rect key="frame" x="92" y="169" width="190" height="30"/>
@@ -66,6 +72,10 @@
                         <color key="backgroundColor" red="0.66275984960000001" green="0.98871612900000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="emailTxtFld" destination="DTc-dJ-Il4" id="Djt-M3-3PP"/>
+                        <outlet property="passwordTxtFld" destination="NrC-we-duD" id="6h1-sk-aeM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -142,11 +152,18 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="註冊"/>
+                                <connections>
+                                    <action selector="onClickRegister:" destination="hQh-mq-Uhp" eventType="touchUpInside" id="eb6-Ts-fPE"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.66275984960000001" green="0.98871612900000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="eiQ-HH-HJn"/>
                     </view>
+                    <connections>
+                        <outlet property="emailTxtFld" destination="Pme-3O-w71" id="dgF-I7-TVc"/>
+                        <outlet property="passwordTxtFld" destination="sxD-Ok-rLD" id="1RA-yI-Vy1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6TR-Tg-Ywc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

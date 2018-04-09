@@ -10,18 +10,34 @@ import UIKit
 import Firebase
 class RegisterViewController: UIViewController {
 
+    @IBOutlet weak var emailTxtFld: UITextField!
+    @IBOutlet weak var passwordTxtFld: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
+    @IBAction func onClickRegister(_ sender: Any) {
+        if emailTxtFld.text == "" || passwordTxtFld.text == ""{
+            print("請輸入E-mail密碼")
+            return
+        }
+        Auth.auth().createUser(withEmail: emailTxtFld.text!, password: passwordTxtFld.text!){(user,error) in
+            if error != nil{
+                print((error?.localizedDescription)!)
+                return
+            }
+            print("已登入")
+        }
+    }
+    
     /*
     // MARK: - Navigation
 
