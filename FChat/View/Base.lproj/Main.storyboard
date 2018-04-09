@@ -108,10 +108,10 @@
             </objects>
             <point key="canvasLocation" x="117.59999999999999" y="870.31484257871068"/>
         </scene>
-        <!--View Controller-->
+        <!--Register View Controller-->
         <scene sceneID="znH-u3-NqV">
             <objects>
-                <viewController id="hQh-mq-Uhp" sceneMemberID="viewController">
+                <viewController id="hQh-mq-Uhp" customClass="RegisterViewController" customModule="FChat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="otX-L1-XnD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

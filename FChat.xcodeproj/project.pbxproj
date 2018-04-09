@@ -13,6 +13,7 @@
 		F7EE7B0B207B158F00C61E8B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F7EE7B0A207B158F00C61E8B /* Assets.xcassets */; };
 		F7EE7B0E207B158F00C61E8B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7EE7B0C207B158F00C61E8B /* LaunchScreen.storyboard */; };
 		F7EE7B18207B16E900C61E8B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F7EE7B17207B16E900C61E8B /* GoogleService-Info.plist */; };
+		F7EE7B1A207B198E00C61E8B /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EE7B19207B198E00C61E8B /* RegisterViewController.swift */; };
 		FEF24B0A0D9F834C49E7011C /* Pods_FChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F260E96FFD921DF12D103CD7 /* Pods_FChat.framework */; };
 /* End PBXBuildFile section */
 
@@ -27,6 +28,7 @@
 		F7EE7B0D207B158F00C61E8B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F7EE7B0F207B158F00C61E8B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F7EE7B17207B16E900C61E8B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F7EE7B19207B198E00C61E8B /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		FD3AC1D9F5A83DB2EA5552C6 /* Pods-FChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FChat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FChat/Pods-FChat.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -103,6 +105,7 @@
 			children = (
 				F7EE7B05207B158F00C61E8B /* ViewController.swift */,
 				F7EE7B03207B158F00C61E8B /* AppDelegate.swift */,
+				F7EE7B19207B198E00C61E8B /* RegisterViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -239,6 +242,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F7EE7B1A207B198E00C61E8B /* RegisterViewController.swift in Sources */,
 				F7EE7B06207B158F00C61E8B /* ViewController.swift in Sources */,
 				F7EE7B04207B158F00C61E8B /* AppDelegate.swift in Sources */,
 			);
