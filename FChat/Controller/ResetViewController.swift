@@ -25,7 +25,10 @@ class ResetViewController: UIViewController {
     
     @IBAction func onClickLogin(_ sender: Any) {
         if emailTxtFld.text == ""{
-            print("請輸入密碼")
+            let alertController = UIAlertController(title: "提示", message: "請輸6個字的密碼", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "確定", style: .default, handler: nil)
+            alertController.addAction(okAction)
+            present(alertController, animated: true, completion: nil)
         }
         Auth.auth().sendPasswordReset(withEmail: self.emailTxtFld.text!, completion: { (error) in
             // 重設失敗
@@ -33,18 +36,14 @@ class ResetViewController: UIViewController {
                 print((error?.localizedDescription)!)
                 return
             }
-            print("重設成功,請檢查信箱郵件")
+            let alertController = UIAlertController(title: "提示", message: "重設成功,請檢查信箱郵件", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "確定", style: .default, handler: nil)
+            alertController.addAction(okAction)
+            self.present(alertController, animated: true, completion: nil)
         })
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func onClickBack(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
     }
-    */
-
 }

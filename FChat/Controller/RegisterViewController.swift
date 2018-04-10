@@ -26,7 +26,10 @@ class RegisterViewController: UIViewController {
     
     @IBAction func onClickRegister(_ sender: Any) {
         if emailTxtFld.text == "" || passwordTxtFld.text == ""{
-            print("請輸入E-mail密碼")
+            let alertController = UIAlertController(title: "提示", message: "請輸入E-mail 與 6個字的密碼", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "確定", style: .default, handler: nil)
+            alertController.addAction(okAction)
+            present(alertController, animated: true, completion: nil)
             return
         }
         Auth.auth().createUser(withEmail: emailTxtFld.text!, password: passwordTxtFld.text!){(user,error) in
@@ -34,18 +37,15 @@ class RegisterViewController: UIViewController {
                 print((error?.localizedDescription)!)
                 return
             }
-            print("已登入")
+            let alertController = UIAlertController(title: "提示", message: "註冊申請成功", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "確定", style: .default, handler: nil)
+            alertController.addAction(okAction)
+            self.present(alertController, animated: true, completion: nil)
         }
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func onClickBack(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
     }
-    */
 
 }

@@ -16,31 +16,36 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
     }
 
     @IBAction func onClickLongin(_ sender: Any) {
         if emailTxtFld.text == "" || passwordTxtFld.text == ""{
-            print("請輸入E-mail密碼")
+            let alertController = UIAlertController(title: "提示", message: "請輸入E-mail 與 6個字的密碼", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "確定", style: .default, handler: nil)
+            alertController.addAction(okAction)
+            present(alertController, animated: true, completion: nil)
             return
         }
         Auth.auth().signIn(withEmail: emailTxtFld.text!, password: passwordTxtFld.text!){(user,error) in
             if error != nil{
                 print((error?.localizedDescription)!)
+                let alertController = UIAlertController(title: "提示", message: "請輸入正確的E-mail與密碼", preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "確定", style: .default, handler: nil)
+                alertController.addAction(okAction)
+                self.present(alertController, animated: true, completion: nil)
                 return
             }
             print("已登入")
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "ChatView")
+            self.show(vc!, sender: self)
         }
-        
     }
     
     @IBAction func onClickLogout(_ sender: Any) {
-        if Auth.auth().currentUser == nil {
-            print("未登入")
-        }
         do{
             try Auth.auth().signOut()
             print("登出成功")
+            exit(0)
         }catch let error as NSError{
             print((error.localizedDescription))
         }
@@ -48,10 +53,14 @@ class ViewController: UIViewController {
         
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    @IBAction func onClickRegister(_ sender: Any) {
+        emailTxtFld.text = ""
+        passwordTxtFld.text = ""
     }
-
+    @IBAction func onClickRest(_ sender: Any) {
+        emailTxtFld.text = ""
+        passwordTxtFld.text = ""
+    }
+    
 }
 
