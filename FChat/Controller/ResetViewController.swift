@@ -36,7 +36,7 @@ class ResetViewController: UIViewController {
                 print((error?.localizedDescription)!)
                 return
             }
-            let alertController = UIAlertController(title: "提示", message: "重設成功,請檢查信箱郵件", preferredStyle: .alert)
+            let alertController = UIAlertController(title: "提示", message: "重設成功,請檢查信箱郵件,並重新啟動APP", preferredStyle: .alert)
             let okAction = UIAlertAction(title: "確定", style: .default, handler: nil)
             alertController.addAction(okAction)
             self.present(alertController, animated: true, completion: nil)

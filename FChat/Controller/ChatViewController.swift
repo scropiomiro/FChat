@@ -15,6 +15,9 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet var sendButton: UIButton!
     @IBOutlet var messageTextfield: UITextField!
     @IBOutlet var messageTableView: UITableView!
+
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +38,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         messageTableView.separatorStyle = .none
     }
     
-    //MARK: - TableView DataSource Methods
+    //TableView DataSource
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "customMessageCell", for: indexPath) as! CustomMessageCell
         
@@ -44,7 +47,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         return cell
     }
-    
+    //TableView DataCount
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return messageArray.count
     }
@@ -58,7 +61,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         messageTableView.estimatedRowHeight = 120.0
     }
     
-    //MARK: - Send & Recieve from Firebase
+    //Send & Recieve from Firebase
     @IBAction func sendPressed(_ sender: AnyObject) {
         messageTextfield.endEditing(true)
         
