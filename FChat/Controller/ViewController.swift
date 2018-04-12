@@ -13,6 +13,7 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var emailTxtFld: UITextField!
     @IBOutlet weak var passwordTxtFld: UITextField!
+    @IBOutlet weak var roomTxtFld: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +37,7 @@ class ViewController: UIViewController {
                 return
             }
             print("已登入")
+            print("\(self.roomTxtFld.text!)")
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "ChatView")
             self.show(vc!, sender: self)
         }
@@ -49,17 +51,17 @@ class ViewController: UIViewController {
         }catch let error as NSError{
             print((error.localizedDescription))
         }
-        
-        
     }
     
     @IBAction func onClickRegister(_ sender: Any) {
         emailTxtFld.text = ""
         passwordTxtFld.text = ""
+        roomTxtFld.text? = ""
     }
     @IBAction func onClickRest(_ sender: Any) {
         emailTxtFld.text = ""
         passwordTxtFld.text = ""
+        roomTxtFld.text? = ""
     }
     
 }

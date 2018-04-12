@@ -16,9 +16,8 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet var messageTextfield: UITextField!
     @IBOutlet var messageTableView: UITableView!
 
-    
-    
-    
+    var LoginVC :ViewController!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -44,6 +43,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         cell.messageBody.text = messageArray[indexPath.row].messageBody
         cell.senderUsername.text = messageArray[indexPath.row].sender
+        cell.timeNow.text = messageArray[indexPath.row].timeNow
         
         return cell
     }
@@ -58,7 +58,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func configureTableView() {
         messageTableView.rowHeight = UITableViewAutomaticDimension
-        messageTableView.estimatedRowHeight = 120.0
+        messageTableView.estimatedRowHeight = 100.0
     }
     
     //Send & Recieve from Firebase
@@ -67,10 +67,13 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         messageTextfield.isEnabled = false
         sendButton.isEnabled = false
+        let now = Date()
+        let dformatter = DateFormatter()
+        dformatter.dateFormat = "yyyy/MM/dd HH:mm"
         
         let messageDB =
             Database.database().reference().child("Messages")
-        let messageDictionary = ["Sender": Auth.auth().currentUser?.email, "MessageBody": messageTextfield.text!]
+        let messageDictionary = ["Sender": Auth.auth().currentUser?.email, "MessageBody": messageTextfield.text!, "Time": dformatter.string(from: now)]
         
         messageDB.childByAutoId().setValue(messageDictionary) {
             (error, ref) in
@@ -94,20 +97,29 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func retrieveMessages() {
         let messageDB = Database.database().reference().child("Messages")
+
+//        var messageDB = Database.database().reference()
+//        if LoginVC.roomTxtFld.text == nil {
+//            messageDB = Database.database().reference().child("Messages")
+//        }else{
+//            messageDB = Database.database().reference().child((LoginVC.roomTxtFld?.text)!)
+//        }
         
-        messageDB.observe(.childAdded) { (snapshot) in
-            let snapshotValue = snapshot.value as! Dictionary<String, String>
-            
-            let text = snapshotValue["MessageBody"]!
-            let sender = snapshotValue["Sender"]!
-            
-            let message = Message()
-            message.messageBody = text
-            message.sender = sender
-            
-            self.messageArray.append(message)
-            self.configureTableView()
-            self.messageTableView.reloadData()
-        }
+            messageDB.observe(.childAdded) { (snapshot) in
+                let snapshotValue = snapshot.value as! Dictionary<String, String>
+                
+                let text = snapshotValue["MessageBody"]!
+                let sender = snapshotValue["Sender"]!
+                let time = snapshotValue["Time"]!
+                
+                let message = Message()
+                message.messageBody = text
+                message.sender = sender
+                message.timeNow = time
+                
+                self.messageArray.append(message)
+                self.configureTableView()
+                self.messageTableView.reloadData()
+            }
     }
 }
