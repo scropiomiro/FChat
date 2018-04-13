@@ -25,6 +25,7 @@ class MiddleViewController: UIViewController {
     @IBAction func loginChat(_ sender: Any) {
         let vc = self.storyboard!.instantiateViewController(withIdentifier: "ChatView") as! ChatViewController
         vc.groupValue = self.roomTxtFld.text!
+        roomTxtFld.text = ""
         self.show(vc, sender: self)
     }
 }

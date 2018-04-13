@@ -15,11 +15,18 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet var sendButton: UIButton!
     @IBOutlet var messageTextfield: UITextField!
     @IBOutlet var messageTableView: UITableView!
+    @IBOutlet weak var groupLab: UILabel!
     
     var groupValue:String = ""
+    var deviceWidth:CGFloat = 0.0
+    var deviceHeight:CGFloat = 0.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        let screenSize = UIScreen.main.bounds.size
+//        self.view.sizeThatFits(screenSize)
+        
         messageTableView.delegate = self
         messageTableView.dataSource = self
         messageTextfield.delegate = self
@@ -93,12 +100,20 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func telPhone(_ sender: Any) {
+        let url = URL(string: "tel://0966660613")
+        UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+    }
+    
+    
     func retrieveMessages() {
         var messageDB = Database.database().reference()
         if groupValue == "" {
             messageDB = Database.database().reference().child("Public")
+            groupLab.text = "Public"
         }else{
             messageDB = Database.database().reference().child(groupValue)
+            groupLab.text = groupValue
         }
         
             messageDB.observe(.childAdded) { (snapshot) in

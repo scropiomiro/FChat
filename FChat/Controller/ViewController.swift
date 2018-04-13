@@ -13,7 +13,7 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var emailTxtFld: UITextField!
     @IBOutlet weak var passwordTxtFld: UITextField!
-    
+    let device = UIDevice.current
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -36,7 +36,6 @@ class ViewController: UIViewController {
                 return
             }
             print("已登入")
-    
             let vc = self.storyboard!.instantiateViewController(withIdentifier: "MiddleView") as! MiddleViewController
             self.show(vc, sender: self)
         }
