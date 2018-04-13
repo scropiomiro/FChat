@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F70A62A42080496D00FC82B1 /* MiddleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F70A62A32080496D00FC82B1 /* MiddleViewController.swift */; };
 		F7829475207B3A69004E976C /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7829474207B3A69004E976C /* Message.swift */; };
 		F7EE7B04207B158F00C61E8B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EE7B03207B158F00C61E8B /* AppDelegate.swift */; };
 		F7EE7B06207B158F00C61E8B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EE7B05207B158F00C61E8B /* ViewController.swift */; };
@@ -25,6 +26,7 @@
 /* Begin PBXFileReference section */
 		23906DFDDB0CDFF85A21DDA5 /* Pods-FChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FChat.release.xcconfig"; path = "Pods/Target Support Files/Pods-FChat/Pods-FChat.release.xcconfig"; sourceTree = "<group>"; };
 		F260E96FFD921DF12D103CD7 /* Pods_FChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F70A62A32080496D00FC82B1 /* MiddleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiddleViewController.swift; sourceTree = "<group>"; };
 		F7829474207B3A69004E976C /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		F7EE7B00207B158F00C61E8B /* FChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7EE7B03207B158F00C61E8B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 				F7EE7B19207B198E00C61E8B /* RegisterViewController.swift */,
 				F7EE7B1B207B272100C61E8B /* ResetViewController.swift */,
 				F7EE7B22207B30B600C61E8B /* ChatViewController.swift */,
+				F70A62A32080496D00FC82B1 /* MiddleViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -281,6 +284,7 @@
 				F7EE7B1A207B198E00C61E8B /* RegisterViewController.swift in Sources */,
 				F7EE7B1F207B2DA600C61E8B /* CustomMessageCell.swift in Sources */,
 				F7EE7B06207B158F00C61E8B /* ViewController.swift in Sources */,
+				F70A62A42080496D00FC82B1 /* MiddleViewController.swift in Sources */,
 				F7EE7B1C207B272100C61E8B /* ResetViewController.swift in Sources */,
 				F7EE7B23207B30B600C61E8B /* ChatViewController.swift in Sources */,
 				F7EE7B04207B158F00C61E8B /* AppDelegate.swift in Sources */,

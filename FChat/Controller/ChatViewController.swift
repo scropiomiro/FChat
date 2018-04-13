@@ -16,7 +16,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet var messageTextfield: UITextField!
     @IBOutlet var messageTableView: UITableView!
     
-    var roomValue:String = ""
+    var groupValue:String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,10 +66,10 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         dformatter.dateFormat = "yyyy/MM/dd HH:mm"
         
         var messageDB = Database.database().reference()
-        if roomValue == "" {
-            messageDB = Database.database().reference().child("Messages")
+        if groupValue == "" {
+            messageDB = Database.database().reference().child("Public")
         }else{
-            messageDB = Database.database().reference().child(roomValue)
+            messageDB = Database.database().reference().child(groupValue)
         }
         
         let messageDictionary = ["Sender": Auth.auth().currentUser?.email, "MessageBody": messageTextfield.text!, "Time": dformatter.string(from: now)]
@@ -84,7 +84,6 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
                 
                 self.messageTextfield.isEnabled = true
                 self.sendButton.isEnabled = true
-                
                 self.messageTextfield.text = ""
             }
         }
@@ -95,13 +94,11 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func retrieveMessages() {
-
-        print("ChatVC Room value is \(roomValue)")
         var messageDB = Database.database().reference()
-        if roomValue == "" {
-            messageDB = Database.database().reference().child("Messages")
+        if groupValue == "" {
+            messageDB = Database.database().reference().child("Public")
         }else{
-            messageDB = Database.database().reference().child(roomValue)
+            messageDB = Database.database().reference().child(groupValue)
         }
         
             messageDB.observe(.childAdded) { (snapshot) in
