@@ -15,25 +15,19 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet var sendButton: UIButton!
     @IBOutlet var messageTextfield: UITextField!
     @IBOutlet var messageTableView: UITableView!
-
-    var LoginVC :ViewController!
-
+    
+    var roomValue:String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         messageTableView.delegate = self
         messageTableView.dataSource = self
-        
         messageTextfield.delegate = self
-        
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tableViewTapped))
         messageTableView.addGestureRecognizer(tapGesture)
-
         messageTableView.register(UINib(nibName: "MessageCell", bundle: nil), forCellReuseIdentifier: "customMessageCell")
-        
         configureTableView()
         retrieveMessages()
-        
         messageTableView.separatorStyle = .none
     }
     
@@ -71,8 +65,13 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         let dformatter = DateFormatter()
         dformatter.dateFormat = "yyyy/MM/dd HH:mm"
         
-        let messageDB =
-            Database.database().reference().child("Messages")
+        var messageDB = Database.database().reference()
+        if roomValue == "" {
+            messageDB = Database.database().reference().child("Messages")
+        }else{
+            messageDB = Database.database().reference().child(roomValue)
+        }
+        
         let messageDictionary = ["Sender": Auth.auth().currentUser?.email, "MessageBody": messageTextfield.text!, "Time": dformatter.string(from: now)]
         
         messageDB.childByAutoId().setValue(messageDictionary) {
@@ -96,14 +95,14 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func retrieveMessages() {
-        let messageDB = Database.database().reference().child("Messages")
 
-//        var messageDB = Database.database().reference()
-//        if LoginVC.roomTxtFld.text == nil {
-//            messageDB = Database.database().reference().child("Messages")
-//        }else{
-//            messageDB = Database.database().reference().child((LoginVC.roomTxtFld?.text)!)
-//        }
+        print("ChatVC Room value is \(roomValue)")
+        var messageDB = Database.database().reference()
+        if roomValue == "" {
+            messageDB = Database.database().reference().child("Messages")
+        }else{
+            messageDB = Database.database().reference().child(roomValue)
+        }
         
             messageDB.observe(.childAdded) { (snapshot) in
                 let snapshotValue = snapshot.value as! Dictionary<String, String>

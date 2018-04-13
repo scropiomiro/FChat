@@ -37,9 +37,10 @@ class ViewController: UIViewController {
                 return
             }
             print("已登入")
-            print("\(self.roomTxtFld.text!)")
-            let vc = self.storyboard?.instantiateViewController(withIdentifier: "ChatView")
-            self.show(vc!, sender: self)
+            print("Room value is \(self.roomTxtFld.text)")
+            let vc = self.storyboard!.instantiateViewController(withIdentifier: "ChatView") as! ChatViewController
+            vc.roomValue = self.roomTxtFld.text!
+            self.show(vc, sender: self)
         }
     }
     
